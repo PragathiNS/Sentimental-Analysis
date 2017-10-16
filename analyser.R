@@ -45,7 +45,7 @@ GetCorpus <-function(textVector)
   return(doc.corpus)
 }
 
-tweets <- read.csv("C:\\Users\\jglo\\Documents\\ML Project\\airline-twitter-sentiment-release-2016-01-07-00-13-30\\airline-twitter-sentiment\\Tweets.csv")
+tweets <- read.csv("Tweets.csv")
 inData <- data.frame(tweets$tweet_id, tweets$airline_sentiment, tweets$airline ,tweets$text)
 summary(inData)
 
