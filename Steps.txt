@@ -1,0 +1,3 @@
+first explicitly show the computer how to do this, in a process called tokenization.
+After tokenization, we can convert the tokens into a matrix (bag of words model).
+Once we have a matrix, we can a machine learning algorithm to train a model and predict scores.
