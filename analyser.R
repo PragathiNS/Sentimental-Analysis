@@ -79,28 +79,18 @@ wordcloud(freq = as.vector(freqWords_neg), words = names(freqWords_neg),random.o
 wordcloud(freq = as.vector(freqWords_pos), words = names(freqWords_pos),random.order = FALSE,
           random.color = FALSE, colors = brewer.pal(9, 'BuPu')[4:9])
 
-
 docs <- GetCorpus(inData$tweets.text)
-#docs[[1]]   -------   [1] "virginamerica  dhepburn said"
-#strwrap(docs[[10]]) ----- [1] "virginamerica amazing arrived hour early good"
 
 ####### to read the contents in the Corpus ##############
-### BEFORE TM_MAP this is correct ######
 dataframe<-data.frame(text=unlist(sapply(docs, `[`, "content")), stringsAsFactors=F)
-#dataframe[1,] ------ prints the first doc
-
 #Texts and label (Just Combining the required Table)
 newData <- data.frame(dataframe,tweets$airline_sentiment, tweets$airline)
-
-
-
 docs <- tm_map(docs, PlainTextDocument)
 
 nowData <- Corpus(VectorSource(docs))
+                                                            
 #Stage the Data
-#dtm <- DocumentTermMatrix(docs) 
 #inspect(dtm[1:4, 100:2000]) ## docs 1-4, terms 1-2000 frequency
-
 dtm <-DocumentTermMatrix(docs,control = list(weighting = function(x) 
   weightTfIdf(x, normalize = FALSE)))
 #inspect(dtm[1:4, 100:2000])
@@ -119,5 +109,3 @@ wordcloud(words, freq,
 
 words <- names(freq)
 wordcloud(words[1:100], freq[1:100])
-
-
